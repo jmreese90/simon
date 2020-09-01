@@ -10,6 +10,7 @@ $(document).keypress(function(e) {
   }
 })
 
+
 $(".btn").click(function() {
   var color = $(this).attr("id");
 
@@ -35,15 +36,23 @@ $(".btn").click(function() {
 
     var sound = new Audio("sounds/wrong.mp3");
     sound.play();
-    gameOver = true;
-
-    colorOrder = [];
-    level = 0;
-    currenPosition = 0;
+newGame();
   }
 
 });
 
+$("button").click(function() {
+gameOver = false;
+newGame();
+nextLevel();
+});
+
+function newGame(){
+  gameOver = true;
+  colorOrder = [];
+  level = 0;
+  currenPosition = 0;
+}
 function nextLevel() {
   var color = pickRandomColor();
   clicked(color);
